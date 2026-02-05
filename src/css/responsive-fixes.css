@@ -1,0 +1,85 @@
+/* -------------------------------------------------------------
+   Travellers' Archive - Vite migration fixes + responsive hardening
+   Notes:
+   - Keep this file small and focused: only overrides/fixes.
+   - Loaded last from style.css.
+-------------------------------------------------------------- */
+
+/* Prevent accidental horizontal scrolling on small screens */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make media responsive by default */
+img, video, canvas, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safer long text wrapping (IBANs, URLs, archive captions, etc.) */
+p, a, span, h1, h2, h3, h4, h5, h6, li {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Touch targets */
+button, .button, a, input, textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Mobile: tighten big paddings that cause cramped layouts */
+@media (max-width: 768px) {
+  .content-row.row_padding_top { padding-top: 60px !important; }
+  .content-row.row_padding_bottom { padding-bottom: 60px !important; }
+  #hero-caption .hero-title { font-size: clamp(34px, 7vw, 52px) !important; }
+  .TravellersArchive-header .nav-height { height: auto !important; }
+
+  /* Avoid nav items wrapping weirdly */
+  .flexnav { gap: 10px; }
+  .flexnav li a { padding: 10px 0 !important; }
+
+  /* Reduce oversized cursor/ball effects on mobile to improve usability */
+  #magic-cursor, #ball { display: none !important; }
+}
+
+@media (max-width: 480px) {
+  #hero-footer { flex-direction: column; gap: 12px; }
+  .button-wrap.left.scroll-down { justify-content: center; }
+}
+
+
+/* --- Additional mobile readability fixes (Feb 2026) --- */
+@media (max-width: 768px) {
+  /* Prevent long strings from overflowing */
+  .donate-iban,
+  .donate-bank-meta,
+  #info-text span,
+  .copyright,
+  .slide-title,
+  .slide-cat,
+  .slide-date,
+  .hero-subtitle,
+  .hero-title {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  /* Project title + subtitle stack cleanly */
+  .slide-caption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  /* Ensure navigation items wrap instead of overflow */
+  .flexnav li a,
+  .button-text span {
+    white-space: normal;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide-caption { gap: 0.25rem; }
+  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+}
