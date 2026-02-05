@@ -5,6 +5,21 @@
 <!-- Google Analytics removed -->
 <title data-key="projects_page_title">Traveler's Archive</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<style id="i18n-prehide">html[data-i18n-pending="1"] body{visibility:hidden}</style>
+<script>
+(function(){
+  var l=null;
+  try{ l = localStorage.getItem('lang'); }catch(e){ l=null; }
+  l = l || 'en';
+  document.documentElement.lang = l;
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('data-i18n-pending','1');
+  window.__TA_LANG__ = l;
+})();
+</script>
 <meta content="Archive of Swiss-Nigerian encounters from the 1930s to 1970s" name="description" data-content-key="meta_description"/>
 <meta content="Travellers' Archive" name="author"/>
 <meta charset="utf-8">
@@ -288,14 +303,14 @@
 <div class="button-text sticky left"><span data-hover="Back Top" data-key="back_top" data-key="back_top">Back Top</span></div>
 </div>
 <div class="footer-middle">
-<div class="copyright">2025 © <a class="link" href="https://www.Travellers' Archive.com/" target="_blank"><span data-key="site_name">The Travellers' Archive</span></a>. <span data-key="all_rights">All rights reserved.</span></div>
+<div class="copyright">2025 © <a class="link" href="https://www.Travellers' Archive.com/" target="_blank" rel="noopener noreferrer"><span data-key="site_name">The Travellers' Archive</span></a>. <span data-key="all_rights">All rights reserved.</span></div>
 </div>
 <div class="socials-wrap">
 <div class="socials-icon"><i class="fa-solid fa-share-nodes"></i></div>
 <div class="socials-text" data-key="follow_us">Follow Us</div>
 <ul class="socials">
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.Linkedin.com/Travellers' Archive" target="_blank">Lin</a></span></li>
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.instagram.com/Travellers' Archivedesign" target="_blank">In</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.Linkedin.com/Travellers' Archive" target="_blank" rel="noopener noreferrer">Lin</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.instagram.com/Travellers' Archivedesign" target="_blank" rel="noopener noreferrer">In</a></span></li>
 </ul>
 </div>
 </div>
@@ -328,7 +343,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.4.0/smooth-scrollbar.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpK1sWi3J3EbUOkF_K4-UHzi285HyFX5M&loading=async"></script>
-<script src="src/js/Traveller.js"></script>
 <script src="src/js/plugins.js"></script>
 <script src="src/js/common.js"></script>
 <script src="src/js/contact.js"></script>
