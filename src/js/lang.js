@@ -595,9 +595,9 @@
     return (translations[lang] && translations[lang][key]) || null;
   }
 
-  function applyLanguage(lang, root = document) {
+  function applyLanguage(lang) {
     // Update text nodes
-    root.querySelectorAll('[data-key]').forEach((el) => {
+    document.querySelectorAll('[data-key]').forEach((el) => {
       const key = el.getAttribute('data-key');
       const value = t(lang, key);
       if (value == null) return;
@@ -635,7 +635,7 @@
       if (value) el.setAttribute('data-clicked-message', value);
     });
 
-    root.querySelectorAll('[data-content-key]').forEach((el) => {
+    document.querySelectorAll('[data-content-key]').forEach((el) => {
       const key = el.getAttribute('data-content-key');
       const value = t(lang, key);
       if (value) el.setAttribute('content', value);
@@ -669,12 +669,7 @@
         metaDesc.setAttribute('content', descValue);
       }
     }
-  
-    // Reveal content after initial translation pass
-    if (root === document) {
-      document.documentElement.removeAttribute('data-i18n-pending');
-    }
-}
+  }
 
 
 // ---- Language switcher (instant, no reload) ----
@@ -703,65 +698,26 @@ function setActiveLanguageUI(lang) {
 }
 
 function initI18n() {
-  const initialLang =
-    (typeof window !== 'undefined' && window.__TA_LANG__) ||
-    safeGetStoredLanguage() ||
-    document.documentElement.getAttribute('data-lang') ||
-    'en';
-
-  // Apply immediately (this also reveals the page via data-i18n-pending removal)
+  const initialLang = safeGetStoredLanguage() || 'en';
   applyLanguage(initialLang);
   setActiveLanguageUI(initialLang);
 
-  // Keep translations consistent for dynamically injected content (AJAX transitions, etc.)
-  try {
-    const observer = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        for (const node of m.addedNodes || []) {
-          if (!(node instanceof HTMLElement)) continue;
-          // translate the node itself if it has a key
-          if (node.hasAttribute && node.hasAttribute('data-key')) {
-            const key = node.getAttribute('data-key');
-            const val = t(initialLang, key);
-            if (val) node.textContent = val;
-          }
-          // translate descendants
-          if (node.querySelectorAll) {
-            applyLanguage(initialLang, node);
-          }
-        }
-      }
-    });
-
-    if (document.body) {
-      observer.observe(document.body, { childList: true, subtree: true });
-    }
-  } catch (e) {
-    // MutationObserver not available – ignore
-  }
-
   // Use event delegation so nested spans still work
   document.addEventListener('click', (e) => {
-    const btn = e.target.closest('[data-set-lang]');
-    if (!btn) return;
+    const trigger = e.target.closest('.language-switcher');
+    if (!trigger) return;
+
     e.preventDefault();
-    const lang = btn.getAttribute('data-set-lang') || 'en';
+    const lang = trigger.getAttribute('data-lang') || 'en';
+
     applyLanguage(lang);
     setActiveLanguageUI(lang);
     safeSetStoredLanguage(lang);
-
-    // Keep in sync with pre-hide markers
-    document.documentElement.lang = lang;
-    document.documentElement.setAttribute('data-lang', lang);
-    window.__TA_LANG__ = lang;
   });
 }
 
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initI18n);
-} else {
-  initI18n();
-}
+document.addEventListener('DOMContentLoaded', initI18n);
+
 // Make functions available globally (useful for debugging or future UI)
 window.TravellersArchiveI18n = {
   applyLanguage,

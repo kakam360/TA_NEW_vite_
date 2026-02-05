@@ -11,6 +11,10 @@ Primary use:    Showcase Portfolio
 @import url("./src/css/portfolio.css");
 @import url("./src/css/shortcodes.css");
 @import url("./src/css/assets.css");
+@import url("./src/css/responsive-fixes.css");
+
+
+
 /*------------------------------------------------------------------
 
 01. General Styles
