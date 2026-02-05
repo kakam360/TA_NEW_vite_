@@ -5,6 +5,21 @@
 <!-- Google Analytics removed -->
 <title data-key="page_title">Traveler's Archive</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+
+<meta name="referrer" content="strict-origin-when-cross-origin"/>
+<style id="i18n-prehide">html[data-i18n-pending="1"] body{visibility:hidden}</style>
+<script>
+(function(){
+  var l=null;
+  try{ l = localStorage.getItem('lang'); }catch(e){ l=null; }
+  l = l || 'en';
+  document.documentElement.lang = l;
+  document.documentElement.setAttribute('data-lang', l);
+  document.documentElement.setAttribute('data-i18n-pending','1');
+  window.__TA_LANG__ = l;
+})();
+</script>
 <meta content="Archive of Swiss-Nigerian encounters from the 1930s to 1970s" name="description" data-content-key="meta_description"/>
 <meta content="Centre for African Studies Basel" name="author"/>
 <meta charset="utf-8">
@@ -108,8 +123,7 @@
 <div class="content-full-width parallax-scroll-caption" id="hero-caption">
 <div class="inner">
 <h1 class="hero-title caption-timeline"><span data-key="p_workshops_title"></span></h1>
-<div class="hero-subtitle caption-timeline secondary-font"><span data-key="proj_nigeria_switzerland_summary">Connect archival records across Nigeria and Switzerland to reveal shared histories and foster dialogue.</span></div>
-<div class="hero-subtitle caption-timeline secondary-font"><span data-key="project_in_development_note"></span></div>
+
 </div>
 <div class="" id="hero-footer">
 <div class="hero-footer-left">
@@ -178,7 +192,7 @@
 <div class="TravellersArchive-button-wrap parallax-wrap hide-ball">
 <div class="Travellers' Archive-button parallax-element">
 <div class="button-border rounded parallax-element-second">
-<a href="https://www.behance.net/gallery/212473225/Kivira-Naturals-Skincare-Branding-Packaging" target="_blank">
+<a href="https://www.behance.net/gallery/212473225/Kivira-Naturals-Skincare-Branding-Packaging" target="_blank" rel="noopener noreferrer">
 <span data-hover="View Project">View Project</span>
 </a>
 </div>
@@ -230,16 +244,16 @@
 <div class="button-text sticky left"><span data-hover="Back Top" data-key="back_top">Back Top</span></div>
 </div>
 <div class="footer-middle">
-<div class="copyright">2025 © <a class="link" href="https://www.Travellers' Archive.com/" target="_blank">Travellers' Archive</a>. All rights reserved.</div>
+<div class="copyright">2025 © <a class="link" href="https://www.Travellers' Archive.com/" target="_blank" rel="noopener noreferrer">Travellers' Archive</a>. All rights reserved.</div>
 </div>
 <div class="socials-wrap">
 <div class="socials-icon"><i class="fa-solid fa-share-nodes"></i></div>
 <div class="socials-text">Follow Us</div>
 <ul class="socials">
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.dribbble.com/Travellers' Archive" target="_blank">Db</a></span></li>
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.twitter.com/Travellers' Archivedesign" target="_blank">Tw</a></span></li>
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.behance.com/Travellers' Archive" target="_blank">Be</a></span></li>
-<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.facebook.com/Travellers' Archive.ro" target="_blank">Fb</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.dribbble.com/Travellers' Archive" target="_blank" rel="noopener noreferrer">Db</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.twitter.com/Travellers' Archivedesign" target="_blank" rel="noopener noreferrer">Tw</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.behance.com/Travellers' Archive" target="_blank" rel="noopener noreferrer">Be</a></span></li>
+<li><span class="parallax-wrap"><a class="parallax-element" href="https://www.facebook.com/Travellers' Archive.ro" target="_blank" rel="noopener noreferrer">Fb</a></span></li>
 <li><span class="parallax-wrap"><a class="parallax-element" href="https://www.instagram.com/Travellers' Archive.themes/">Ig</a></span></li>
 </ul>
 </div>
@@ -273,7 +287,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/5.0.0/imagesloaded.pkgd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scrollbar/8.4.0/smooth-scrollbar.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpK1sWi3J3EbUOkF_K4-UHzi285HyFX5M&loading=async"></script>
-<script src="src/js/Traveller.js"></script>
 <script src="src/js/plugins.js"></script>
 <script src="src/js/common.js"></script>
 <script src="src/js/contact.js"></script>
